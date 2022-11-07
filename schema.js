@@ -8,39 +8,7 @@ const {
   GraphQLSchema,
 } = require("graphql");
 const axios = require("axios");
-
-const PeopleType = new GraphQLObjectType({
-  name: "Person",
-  fields: () => ({
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-    username: { type: GraphQLString },
-    email: { type: GraphQLString },
-    phone: { type: GraphQLString },
-    website: { type: GraphQLString },
-    address: { type: AddressType },
-    company: { type: CompanyType }
-  }),
-});
-
-const AddressType = new GraphQLObjectType({
-  name: "Address",
-  fields: () => ({
-    suite: { type: GraphQLString },
-    street: { type: GraphQLString },
-    city: { type: GraphQLString },
-    zipcode: { type: GraphQLString },
-  }),
-});
-
-const CompanyType = new GraphQLObjectType({
-  name: "Company",
-  fields: () => ({
-    name: { type: GraphQLString },
-    catchPhrase: { type: GraphQLString },
-    bs: { type: GraphQLString },
-  }),
-});
+const PeopleType = require("./TypeDefs/PeopleType");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
