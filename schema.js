@@ -26,7 +26,7 @@ const AddressType = new GraphQLObjectType({
   fields: () => ({
     street: { type: GraphQLString },
     city: { type: GraphQLString },
-    zipcode: { type: GraphQLString }
+    zipcode: { type: GraphQLString },
   }),
 });
 
@@ -38,12 +38,23 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return axios
           .get("https://jsonplaceholder.typicode.com/users")
-          .then(res => res.data);
+          .then((res) => res.data);
+      },
+    },
+    person: {
+      type: PeopleType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return axios
+          .get(`https://jsonplaceholder.typicode.com/users/${args.id}`)
+          .then((res) => res.data);
       },
     },
   },
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
-})
+  query: RootQuery,
+});
