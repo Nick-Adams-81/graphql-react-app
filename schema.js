@@ -17,16 +17,28 @@ const PeopleType = new GraphQLObjectType({
     username: { type: GraphQLString },
     email: { type: GraphQLString },
     phone: { type: GraphQLString },
+    website: { type: GraphQLString },
     address: { type: AddressType },
+    company: { type: CompanyType }
   }),
 });
 
 const AddressType = new GraphQLObjectType({
   name: "Address",
   fields: () => ({
+    suite: { type: GraphQLString },
     street: { type: GraphQLString },
     city: { type: GraphQLString },
     zipcode: { type: GraphQLString },
+  }),
+});
+
+const CompanyType = new GraphQLObjectType({
+  name: "Company",
+  fields: () => ({
+    name: { type: GraphQLString },
+    catchPhrase: { type: GraphQLString },
+    bs: { type: GraphQLString },
   }),
 });
 
