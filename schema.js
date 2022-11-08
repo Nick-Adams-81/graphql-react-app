@@ -1,14 +1,12 @@
 const {
-  GraphqlObjectType,
   GraphQLInt,
-  GraphQLString,
-  GraphQLBoolean,
   GraphQLObjectType,
   GraphQLList,
   GraphQLSchema,
 } = require("graphql");
 const axios = require("axios");
 const PeopleType = require("./TypeDefs/PeopleType");
+const myArr = []
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
